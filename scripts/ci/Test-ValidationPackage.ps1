@@ -61,7 +61,7 @@ function Test-BlockingLeakPatterns {
         'Windows AppData path' = '(?i)[A-Z]:\\[^\x00\r\n]{1,160}\\AppData\\(?:Local|Roaming)\\'
         'GitHub runner workspace path' = '(?i)[A-Z]:\\a\\[^\\\x00\r\n]+\\'
         'local source or build root' = '(?i)[A-Z]:\\(?:agent|build|repos|src|source|workspace|work)\\[^\\\x00\r\n]+\\'
-        'Game Routines repository checkout path' = '(?i)[A-Z]:\\[^\x00\r\n]{0,200}\\playnite-gameroutines-plugin(?:\\|/)'
+        'Game Routines repository checkout path' = '(?i)[A-Z]:\\[^\x00\r\n]{0,200}\\(?:playnite-gameroutines-plugin|game-routines)(?:\\|/)'
     }
 
     $escapedRoot = [regex]::Escape($ResolvedRepositoryRoot)

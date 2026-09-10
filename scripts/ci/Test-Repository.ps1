@@ -270,7 +270,7 @@ for ($packageIndex = 0; $packageIndex -lt $installer.Packages.Count; $packageInd
     }
 
     $underscoredVersion = $packageVersion.Replace('.', '_')
-    $expectedUrl = "https://github.com/felipeaucc/playnite-gameroutines-plugin/releases/download/v$packageVersion/$extensionId`_$underscoredVersion.pext"
+    $expectedUrl = "https://github.com/felipeaucc/game-routines/releases/download/v$packageVersion/$extensionId`_$underscoredVersion.pext"
     if ([string]$package['PackageUrl'] -cne $expectedUrl) {
         Stop-Validation "Package $packageVersion URL must be exactly $expectedUrl"
     }

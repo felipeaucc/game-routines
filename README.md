@@ -92,11 +92,11 @@ The screenshots below show the optional controls in the modified FusionX setup u
 
 ### Playnite Add-on Browser
 
-Add-on Browser installation is pending acceptance into the Playnite Add-on Database.
+Game Routines is available through Playnite's Add-on Browser. Search for Game Routines under Generic add-ons and install it directly from Playnite.
 
 ### Manual installation
 
-1. Download the `.pext` file from the [latest Game Routines release](https://github.com/felipeaucc/playnite-gameroutines-plugin/releases/latest).
+1. Download the `.pext` file from the [latest Game Routines release](https://github.com/felipeaucc/game-routines/releases/latest).
 2. Open it with Playnite.
 3. Restart Playnite if requested.
 
@@ -104,7 +104,7 @@ The `.pext` installs Game Routines only. It does not require or modify a third-p
 
 ## Updating
 
-Until Game Routines is accepted into the Playnite Add-on Database, install updates manually from GitHub Releases. Normal add-on update notifications and installation through Playnite will become available after the database entry is accepted.
+Updates are delivered through Playnite's normal add-on update flow. You can also update manually by downloading the latest `.pext` from GitHub Releases.
 
 ## Getting started
 
