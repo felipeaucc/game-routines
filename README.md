@@ -78,7 +78,11 @@ Game Routines works with Playnite's standard Default theme. No third-party theme
 
 With the Default theme, you can use Game Routines through its settings, context-menu actions, checklist windows, reminders, and notifications. The Default theme does not include the optional embedded **Checklists** tab, embedded state controls, or incomplete cover indicator. Those extra controls are optional and are not needed to use Game Routines.
 
-Some themes can show optional Game Routines controls directly in the game view. [FusionX](https://github.com/sakasakiking/FusionX) 2.1.1 was used as the reference integration during development, but the official FusionX theme does not currently include those extra controls.
+Some themes can show optional Game Routines controls directly in the game view. [FusionX](https://github.com/sakasakiking/FusionX) 2.1.1 was used as the reference integration during development.
+
+Official FusionX does not currently include the Game Routines controls. Upstream support has been proposed in [FusionX pull request #105](https://github.com/sakasakiking/FusionX/pull/105).
+
+FusionX 2.1.1 users can also install the integration manually. See the [FusionX 2.1.1 integration instructions](Integrations/FusionX/2.1.1/) for installation, backup, and restore steps.
 
 ### Optional theme-integration example
 
@@ -122,7 +126,7 @@ Updates are delivered through Playnite's normal add-on update flow. You can also
 
 Game Routines exposes three custom UI elements that Playnite Desktop themes can host: the multi-routine checklist, overall-state toggle, and incomplete-state indicator. See [Theme integration](THEME_INTEGRATION.md) for the registered source and element names, hosting guidance, and behavior expectations.
 
-The files under [`Integrations/FusionX/2.1.1/`](Integrations/FusionX/2.1.1/) provide an optional reference implementation for theme developers.
+The files under [`Integrations/FusionX/2.1.1/`](Integrations/FusionX/2.1.1/) provide the tested FusionX 2.1.1 integration, including manual installation instructions for users and reference material for theme developers.
 
 ## Development and source
 

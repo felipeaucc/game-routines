@@ -1,41 +1,98 @@
-# [FusionX](https://github.com/sakasakiking/FusionX) 2.1.1 reference implementation
+# FusionX 2.1.1 integration
 
-This directory contains a version-specific reference implementation of the embedded Game Routines UI for [FusionX](https://github.com/sakasakiking/FusionX) 2.1.1. It is used to develop and test the embedded controls, document exactly what changed, preserve provenance and license attribution, and provide material for a possible future upstream contribution to [FusionX](https://github.com/sakasakiking/FusionX).
+This directory contains the tested Game Routines integration for [FusionX](https://github.com/sakasakiking/FusionX) 2.1.1.
 
-These files are not part of the normal Game Routines installation. Casual users are not expected to patch their [FusionX](https://github.com/sakasakiking/FusionX) installation manually. The files are not included in the Game Routines `.pext`, and official FusionX does not currently include these changes.
+The integration adds the optional embedded Game Routines controls directly to the FusionX game overview:
 
-## Reference files
+- `GameRoutines_Checklist`, shown in a **Checklists** tab
+- `GameRoutines_StateToggle`, shown beside the game cover
+- `GameRoutines_IncompleteIndicator`, shown over the cover when the game's overall counted routine state is incomplete
 
-The reference implementation modifies only:
+These controls are optional. Game Routines itself does not require FusionX or any other third-party theme.
+
+Official FusionX does not currently include this integration. Upstream support has been proposed in [FusionX pull request #105](https://github.com/sakasakiking/FusionX/pull/105).
+
+## Compatibility
+
+These replacement files are intended for **FusionX 2.1.1 only**.
+
+Do not copy them into another FusionX version unless that version has first been compared against this integration and confirmed compatible.
+
+The integration modifies only:
 
 - `Views/DetailsViewGameOverview.xaml`
 - `Views/GridViewGameOverview.xaml`
 
-The copies are derived from the official [FusionX](https://github.com/sakasakiking/FusionX) 2.1.1 package. The pristine files used as the comparison baseline have these SHA-256 hashes:
+The reference files were derived from the official FusionX 2.1.1 package.
+
+The pristine files used as the comparison baseline have these SHA-256 hashes:
 
 - `Views/DetailsViewGameOverview.xaml`: `9261DEBE98EB34AE8CDB48DE323457AA74D2A03DD90EA83E91CA636816E664DA`
 - `Views/GridViewGameOverview.xaml`: `4679CB90EE4A8E620463C188AC5E7CDE70CD114976BC6AB3236D71AE2E5E0505`
 
 [FusionX](https://github.com/sakasakiking/FusionX) is a third-party project. See [LICENSE.FusionX.txt](LICENSE.FusionX.txt) for its MIT license and attribution.
 
-## Added Game Routines hosts
+## Manual installation
 
-The two modified views add the following Game Routines-specific hosts:
+Before starting, make sure Game Routines and FusionX 2.1.1 are already installed.
 
-- `GameRoutines_StateToggle`, a compact tasks completion toggle control beside the game cover. The control also provides convenient shortcuts to Game Routines Settings and Custom Reminder actions; those underlying features remain accessible independently of the [FusionX](https://github.com/sakasakiking/FusionX) integration.
-- `GameRoutines_Checklist`, a **Checklists** tab after Notes. It embeds the multi-routine checklist UI, including New Checklist and Delete Checklist actions supplied by the extension.
-- `GameRoutines_IncompleteIndicator`, a non-interactive red indicator on the cover when the game's overall counted routine state is incomplete.
+1. Close Playnite completely.
 
-Each host derives visibility from its injected Game Routines control. The controls collapse for untracked games and fail safely when Game Routines is not installed. They use Playnite's `PluginUserControl.GameContext` and authoritative `Game.Id`; the theme contains no game-specific configuration.
+2. Open the FusionX theme folder:
 
-The compact control reuses [FusionX](https://github.com/sakasakiking/FusionX)'s native action-control resources and layout. The cover indicator is rendered as an independent, non-interactive overlay so [FusionX](https://github.com/sakasakiking/FusionX)'s stock cover grid, opacity mask, image container, and BackgroundChanger host remain unchanged.
+   ```text
+   %APPDATA%\Playnite\Themes\Desktop\FusionX_54244ec8-29ec-418e-bce7-415250c8d67b
+   ```
 
-## Advanced manual testing
+3. Open its `Views` folder.
 
-The following steps are for developers and testers who intentionally want to reproduce the reference implementation. Normal users should install the Game Routines `.pext` and are not expected to edit theme files.
+4. Back up these two existing files somewhere safe:
 
-These files target [FusionX](https://github.com/sakasakiking/FusionX) **2.1.1 only**. Before testing them, close Playnite and back up the active theme's matching Details and Grid view files. Then replace only those two files with the copies in this folder.
+   ```text
+   DetailsViewGameOverview.xaml
+   GridViewGameOverview.xaml
+   ```
 
-Do not copy these files into another [FusionX](https://github.com/sakasakiking/FusionX) version without first comparing that version's view structure and reapplying only the three Game Routines host sections. A [FusionX](https://github.com/sakasakiking/FusionX) update may overwrite manually installed integration files. Game Routines does not patch the theme automatically.
+5. Download the corresponding replacement files from this directory:
 
-The minimal host changes are intended to remain suitable for a future upstream contribution to the official [FusionX repository](https://github.com/sakasakiking/FusionX).
+   ```text
+   Views/DetailsViewGameOverview.xaml
+   Views/GridViewGameOverview.xaml
+   ```
+
+6. Copy the downloaded files into the FusionX `Views` folder and replace the existing files when prompted.
+
+7. Start Playnite.
+
+The Game Routines controls should now be available in FusionX for tracked games.
+
+The controls automatically collapse when the selected game is not tracked or when Game Routines does not provide visible content.
+
+## Restoring the original FusionX files
+
+To remove the manual integration:
+
+1. Close Playnite.
+2. Open the FusionX `Views` folder.
+3. Replace the two modified files with the backups you created before installation.
+4. Start Playnite again.
+
+Reinstalling or updating FusionX may also restore the theme's original files.
+
+## Updates
+
+A FusionX update may overwrite the manually installed integration files.
+
+Do not automatically reuse these replacement files after updating to a different FusionX version. Check this directory or the Game Routines documentation first to confirm whether that version is supported.
+
+Game Routines never patches FusionX automatically.
+
+## Developer reference
+
+The integration keeps FusionX's existing cover system and other extension integrations intact.
+
+The cover indicator is an independent, non-interactive overlay. The state toggle uses the existing cover-side action area, and the checklist uses the existing game overview tab structure.
+
+Each host derives visibility from its injected Game Routines control and uses Playnite's `PluginUserControl.GameContext` with the authoritative `Game.Id`.
+
+The theme contains no game-specific Game Routines configuration.
